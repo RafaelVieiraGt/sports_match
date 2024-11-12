@@ -1,0 +1,13 @@
+<header>
+    <div class="infos">
+        <img src="../../Assets/header-icon.svg" />
+
+        <div class="navigation-buttons">
+            <button [ngClass]="isLanding ? 'btn-hidden' : 'button-home'" (click)="navigate('/game-hub')" >Jogos</button>
+            <button [ngClass]="isLanding ? 'btn-hidden' : 'button-home'" (click)="navigate('#')" >Times</button>
+            <button [ngClass]="isLanding ? 'btn-hidden' : 'button-home'" (click)="navigate('/profile')" >Perfil</button>
+            <button [ngClass]="isLanding ? 'button-login' : 'btn-hidden'" (click)="navigate('#')" >Fazer Login</button>
+        </div>
+    </div>
+    <div class="underline" ></div>
+</header>

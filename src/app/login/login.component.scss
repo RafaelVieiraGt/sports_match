@@ -1,0 +1,131 @@
+.body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.area-esq {
+    width: 50%;
+    height: 100%;
+    border-radius: 0 45px 45px 0;
+    background-color: #efcf26;
+}
+.image-area {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-area img {
+    width: 500px;
+    height: 500px;
+}
+.credits {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+}
+.credits span {
+    font-family: "Antonio";
+    font-size: 20px;
+    font-weight: 500;
+}
+.area-dir {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-area {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+.form-area form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.form-area input, .form-area select {
+    width: 60%;
+    font-size: 20px;
+    padding: 10px 14px;
+    background-color: #E1E0E0;
+    font-family: "Anton";
+    font-weight: 500;
+    border: 0;
+    border-radius: 44px;
+}
+.form-button-login {
+    border: 0;
+    padding: 10px 14px;
+    font-size: 20px;
+    width: 30%;
+    font-family: 'Antonio';
+    border-radius: 40px 40px 40px 40px;
+    background-color: #245324;
+    color: #fff;
+    border-right: 5px solid #000;
+    border-bottom: 3px solid #000;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.form-button-login:hover{
+    color: #245324;
+    border: 1px solid #245324;
+    background: #fff;
+}
+.modal-confirmar-cep {
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    right: 35%;
+    z-index: 99999;
+    border: 0;
+    border-radius: 44px;
+    background: #E1E0E0;
+}
+.modal-confirmar-cep h1 {
+    font-family: "Anton";
+    font-weight: 500;
+}
+.modal-confirmar-cep span {
+    font-family: "Antonio";
+    font-weight: 500;
+    font-size: 22px;
+    margin-top: -40px;
+}
+.dado-area {
+    margin-top: 20px;
+}
+.dado-area span {
+    margin-left: 10px;
+    font-family: "Antonio";
+    font-weight: 500;
+    font-size: 18px;
+}
+.modal-confirmar-cep .button-area {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.modal-confirmar-cep .button-area span {
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Antonio";
+    font-weight: 500;
+    margin-top: 15px;
+}

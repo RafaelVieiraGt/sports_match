@@ -1,0 +1,89 @@
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 70px 0;
+}
+.container-home{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+ .content-esq{
+     width: 50%;
+}
+.content-esq .title{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 95%;
+}
+.title h1{
+    font-family: 'Anton';
+    font-size: 64px;
+    margin-bottom: 0;
+}
+.title .parte-baixo h1 {
+    margin-top: 0;
+}
+.parte-baixo {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.parte-baixo button {
+    border: 0;
+    padding: 6px 18px;
+    height: 80px;
+    font-size: 32px;
+    width: 30%;
+    font-family: 'Antonio';
+    border-radius: 40px 40px 40px 40px;
+    background-color: #245324;
+    color: #fff;
+    border-right: 5px solid #000;
+    border-bottom: 3px solid #000;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.parte-baixo button:hover{
+    color: #245324;
+    border: 1px solid #245324;
+    background: #fff;
+}
+.text {
+    width: 80%;
+    text-align: start;
+    font-family: 'Antonio';
+    font-size: 22px;
+    line-height: 40px;
+}
+
+.container-home-baixo {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.container-home-baixo h1 {
+    width: 60%;
+    font-size: 44px;
+    font-family: 'Anton';
+}
+
+.cesta {
+    margin-top: 30px;
+    width: 205px;
+    height: 288px;
+}
+.bilhete {
+    width: 220px;
+    height: 228px;
+}
+

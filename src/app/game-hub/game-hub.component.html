@@ -1,0 +1,45 @@
+<app-header [isLanding]="false"></app-header>
+
+<body>
+    <h1>Jogos perto de você!</h1>
+
+    <div class="games-area">
+        <div class="card" *ngFor="let game of data">
+            <div class="img-area">
+                <img src={{game.urlPhoto}} />
+            </div>
+            <div class="content">
+                <h2>{{game.openGameTitle}}</h2>
+                <div class="infos">
+                    <div class="people-time">
+                        <span><fa-icon [icon]="['fas', 'clock']" /> {{game.date}}</span>
+                        <span>👤{{game.actualPlayers}}/{{game.maxPlayers}}</span>
+                    </div>
+                    <span>📍 {{game.placeName}} - {{game.realDistance.toFixed(2)}}km</span>
+                </div>
+                <form [formGroup]="selectForm" class="posicoes">
+                    <label>Posição:</label>
+                    <ng-container *ngIf="game.sportId === 1">
+                        <select formControlName="position">
+                            <option *ngFor="let p of futPositions" value="{{p.positionId}}">{{p.positionName}}</option>
+                        </select>
+                    </ng-container>
+
+                    <ng-container *ngIf="game.sportId === 2">
+                        <select formControlName="position">
+                            <option *ngFor="let p of baskPositions" value="{{p.positionId}}">{{p.positionName}}</option>
+                        </select>
+                    </ng-container>
+
+                    <ng-container *ngIf="game.sportId === 3">
+                        <select formControlName="position">
+                            <option *ngFor="let p of voleiPositions" value="{{p.positionId}}">{{p.positionName}}</option>
+                        </select>
+                    </ng-container>
+                    
+                </form>
+                <button (click)="participar(game.openGameId)">Participar</button>
+            </div>
+        </div>
+    </div>
+</body>

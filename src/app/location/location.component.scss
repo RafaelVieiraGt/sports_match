@@ -1,0 +1,200 @@
+.body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 20px;
+}
+.container {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.form-dir{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-dir form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.form-dir form h2 {
+    font-family: "Anton";
+    font-weight: 500;
+}
+.inputfields {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.inputfields-cima {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+.inputfields-baixo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.inputarea {
+    padding: 8px 12px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.inputarea label {
+    font-family: "Antonio";
+    font-weight: 500;
+    font-size: 18px;
+
+}
+.inputarea input {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 40px;
+    font-family: "Antonio";
+    border: 1px solid #aaa;
+}
+.map-esq {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+}
+.map-esq h2 {
+    font-family: "Anton";
+    font-weight: 500;
+}
+.map-select {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 40px;
+}
+.map-select span {
+    font-family: "Antonio";
+    font-size: 18px;
+}
+.map-select select, .inputfields-baixo .inputarea select {
+    border: 1px solid #aaa;
+    padding: 8px;
+    font-family: "Antonio";
+    font-size: 16px;
+    border-radius: 40px;
+}
+.map-select select option, .inputfields-baixo .inputarea select option{
+    font-family: "Antonio";
+    font-size: 16px;
+}
+.select-quadra {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+.select-quadra button {
+    font-size: 18px;
+    padding: 10px 20px;
+    width: 120px;
+}
+
+.modal{
+    display: flex; /* Usar flexbox para centralizar */
+    position: fixed; /* Posicionamento fixo */
+    top: 0; /* Posicionar no topo */
+    left: 0; /* Posicionar à esquerda */
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    z-index: 1000; /* Z-index alto para ficar acima de outros elementos */
+    justify-content: center; /* Centralizar horizontalmente */
+    align-items: center;
+}
+.modal-cadastro-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    border-radius: 12px;
+    height:600px;
+    z-index: 99999;
+    background-color: #fff;
+    gap: 20px;
+}
+.modal-cadastro-content h2 {
+    font-family: "Anton";
+    text-align: center;
+    width: 90%;
+    font-weight: 500;
+    font-size: 24px;
+}
+.modal-cadastro-content span {
+    text-align: center;
+    font-family: "Antonio";
+    width: 90%;
+    font-weight: 500;
+    font-size: 18px;
+}
+.modal-cadastro-content form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.content-button {
+    border: 0;
+    padding: 10px 18px;
+    font-size: 22px;
+    width: 180px;
+    font-family: 'Antonio';
+    font-weight: 500;
+    border-radius: 40px 40px 40px 40px;
+    background-color: #245324;
+    color: #fff;
+    border-right: 5px solid #000;
+    border-bottom: 3px solid #000;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.content-button:hover{
+    color: #245324;
+    border: 1px solid #245324;
+    background: #fff;
+}
+.sair {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    border: 0;
+    background: transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.sair :hover {
+    color: red;
+}

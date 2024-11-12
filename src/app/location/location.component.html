@@ -1,0 +1,80 @@
+<app-header [isLanding]="false"></app-header>
+<div class="modal" *ngIf="modalActive">
+    <div class="modal-cadastro-content" *ngIf="modalActive">
+        <button (click)="sairModal()" class="sair">
+            <fa-icon class="icon" [icon]="['fas', 'x']" size="2x"></fa-icon>
+        </button>
+        <h2>Notamos que voce vai jogar em um lugar novo!</h2>
+        <span>Antes de cadastrar o jogo, preencha as informações sobre sua quadra nova.</span>
+        <form [formGroup]="placeForm">
+            <div class="inputfields">
+                <div class="inputarea">
+                    <label>Nome</label>
+                    <input formControlName="name" type="text"/>
+                </div>
+    
+                <div class="inputarea">
+                    <label>Descrição</label>
+                    <input formControlName="description" type="text"/>
+                </div>
+                
+            </div>
+            <button class="content-button" (click)="cadastrarQuadraJogo()">Salvar</button>
+        </form>
+    </div>
+</div>
+<div class="body">
+    <div class="container">
+        <div class="form-dir">
+            <form [formGroup]="gameForm">
+                <h2>Crie um Jogo Casual!</h2>
+
+                <div class="inputfields">
+                    <div class="inputfields-cima">
+                        <div class="inputarea">
+                            <label>Título</label>
+                            <input formControlName="title" type="text"/>
+                        </div>
+
+                        <div class="inputarea">
+                            <label>Descrição</label>
+                            <input formControlName="description" type="text"/>
+                        </div>
+                    </div>
+                    <div class="inputfields-baixo">
+                        <div class="inputarea">
+                            <label>Esporte</label>
+                            <select  formControlName="sport" type="text">
+                                <option *ngFor="let sport of sports" [ngValue]="sport.sportId">{{sport.sportName}}</option>
+                            </select>
+                        </div>
+
+                        <div class="inputarea">
+                            <label>Data</label>
+                            <input formControlName="day" type="datetime-local"/>
+                        </div>
+
+                        <div class="inputarea">
+                            <label>Máximo de Jogadores</label>
+                            <input formControlName="maxPlayers" type="number"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="map-esq">
+            <h2>Selecione o melhor lugar!</h2>
+            <app-map></app-map>
+            <div class="map-select">
+                <span>Ou jogue em um lugar Conhecido</span>
+                <form class="select-quadra" [formGroup]="selectQuadra">
+                    <select formControlName="quadra">
+                        <option *ngFor="let place of places" [ngValue]="place" >{{place.placeName}}</option>
+                    </select>
+                    <button class="content-button" (click)="quadraExists()">Selecionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button class="content-button" (click)="cadastrarJogo()">Cadastrar jogo</button>
+</div>

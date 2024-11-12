@@ -1,0 +1,69 @@
+<div class="body" >
+    <div class="area-esq" >
+        <div class="image-area">
+            <img src="../../Assets/header-icon.svg">
+        </div>
+        <div class="credits">
+            <span>Ciência da Computação - UNISAGRADO</span>
+            <span>2024</span>
+        </div>
+    </div>
+    <div class="area-dir">
+        <div class="form-area" >
+            <form [formGroup]="registerForm">
+                <input formControlName="name" type="text" placeholder="Nome" />
+                <input formControlName="email" type="text" placeholder="E-mail" />
+                <input formControlName="senha" type="text" placeholder="Senha" />
+                <select (change)="handleChange()" formControlName="sport" type="text" placeholder="Esportes de Interesse" >
+                    <option *ngFor="let sport of sports" value="{{sport.sportId}}">
+                        {{sport.sportName}}
+                    </option>
+                </select>
+                    <ng-container *ngIf="registerForm.get('sport')?.value == 1">
+                        <select formControlName="position">
+                            <option *ngFor="let p of futPositions" value="{{p.positionId}}">{{p.positionName}}</option>
+                        </select>
+                    </ng-container>
+
+                    <ng-container *ngIf="registerForm.get('sport')?.value == 2">
+                        <select formControlName="position">
+                            <option *ngFor="let p of baskPositions" value="{{p.positionId}}">{{p.positionName}}</option>
+                        </select>
+                    </ng-container>
+
+                    <ng-container *ngIf="registerForm.get('sport')?.value == 3">
+                        <select formControlName="position">
+                            <option *ngFor="let p of voleiPositions" value="{{p.positionId}}">{{p.positionName}}</option>
+                        </select>
+                    </ng-container>
+                <input appCepMask formControlName="cep" type="text" placeholder="CEP" />
+                <button (click)="confirmCep()" class="form-button-login">Registrar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-confirmar-cep" *ngIf="modalActive">
+        <h1>Antes, confirme os dados do seu Endereço!</h1>
+        <span>{{cep.cep}}</span>
+        <div class="dado-area">
+            <fa-icon [icon]="['fas', 'city']" />
+            <span>{{cep.localidade}}</span>
+        </div>
+
+        <div class="dado-area">
+            <fa-icon [icon]="['fas', 'road']" />
+            <span>{{cep.logradouro}}</span>
+        </div>
+
+        <div class="dado-area">
+            <fa-icon [icon]="['fas', 'map']" />
+            <span>{{cep.uf}}</span>
+        </div>
+
+        <div class="button-area">
+            <button class="form-button-login">Finalizar</button>
+            <span (click)="closeModal()">Retornar</span>
+        </div>
+    </div>
+</div>
+

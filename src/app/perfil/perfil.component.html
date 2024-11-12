@@ -1,0 +1,75 @@
+<app-header></app-header>
+
+<body>
+    <div class="content-perfil">
+        <div class="content-lado-esq">
+            <div class="dados-perfil">
+                <div class="image">
+                    <img src="../../Assets/perfil-vazio.png" alt="">
+                </div>
+                <div class="dados-principais">
+                    <h1>{{user.userName}}</h1>
+                    <span>📍 {{user.addressStreet}} - SP</span>
+                    <p>{{user.userDescription}}</p>
+                </div>
+                <div class="preferencias">
+                    <h2>Preferências</h2>
+
+                    <span>Zagueiro <fa-icon [icon]="['fas', 'x']" ></fa-icon></span>
+
+                    <span>Futebol <fa-icon [icon]="['fas', 'x']" ></fa-icon></span>
+
+                    <span>Editar Perfil <fa-icon [icon]="['fas', 'pencil']"  ></fa-icon></span>
+                </div>
+            </div>
+        </div>
+        <div class="content-lado-dir">
+            <div class="container-game-infos">
+                <div class="back-image">
+                    <img src="../../Assets/background-perfil.png"/>
+                </div>
+                <div class="information">
+                    <div class="team">
+                        <h1>Team</h1>
+
+                        <img src="../../Assets/team-logo-teste.png"/>
+
+                        <div class="team-data">
+                            <h3>Fury Team</h3>
+                            <span>Time de vôlei juvenil feminino</span>
+                            <span>Desde 1993</span>
+                        </div>
+                    </div>
+                    <div class="underline"></div>
+                    <div class="next-game">
+                        <h1>Próximo Jogo</h1>
+
+                        <div class="card" *ngIf="nextGame !== null">
+                            <div class="img-area">
+                                <img src="{{nextGame.urlPhoto}}"/>
+                            </div>
+                            <div class="content">
+                                <h2>{{nextGame.openGameTitle}}</h2>
+                                <div class="infos">
+                                    <div class="gente-data">
+                                        <span>👤{{nextGame.actualPlayers}}/{{nextGame.maxPlayers}}</span>
+                                        <span><fa-icon [icon]="['fas', 'clock']"></fa-icon> {{nextGame.date}}</span>
+                                    </div>
+                                    <span>📍 {{nextGame.placeName}} - {{nextGame.realDistance}}km</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-nogame" *ngIf="nextGame === null">
+                            <h2>Nenhum jogo disponível...</h2>
+                            <div class="marcarjogo-btn">
+                                <span>Marque um agora!</span>
+                                <button (click)="navigate('locations')" ><fa-icon [icon]="['fas', 'plus']"/></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
