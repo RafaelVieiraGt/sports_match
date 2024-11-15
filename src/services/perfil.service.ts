@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../model/User';
 import { CasualGame } from '../model/CasualGame';
+import { EditPerfilDTO } from '../model/EditPerfilDTO';
+import { UserPhoto } from '../model/UserPhoto';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +20,13 @@ export class PerfilService {
 
   getNextGame(latitude: number, longitude: number) {
     return this.http.get<CasualGame>(this.apiUrl + `base-games/next-game/${latitude}/${longitude}`)
+  }
+
+  edit(userId: number, dto: EditPerfilDTO): Observable<any> {
+    return this.http.put(this.apiUrl + `usuario/edit/${userId}`, dto)
+  }
+
+  getPhoto(userId: number): Observable<UserPhoto> {
+    return this.http.get<UserPhoto>(this.apiUrl + `usuario/get-photo/${userId}`)
   }
 }

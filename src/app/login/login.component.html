@@ -1,4 +1,7 @@
 <div class="body" >
+    <button (click)="navigate('/home')" class="btn-voltar">
+        Voltar
+    </button>
     <div class="area-esq" >
         <div class="image-area">
             <img src="../../Assets/header-icon.svg">
@@ -13,7 +16,17 @@
             <form [formGroup]="registerForm">
                 <input formControlName="name" type="text" placeholder="Nome" />
                 <input formControlName="email" type="text" placeholder="E-mail" />
-                <input formControlName="senha" type="text" placeholder="Senha" />
+
+                <div class="inputSenha" *ngIf="viewPasswd">
+                    <input formControlName="senha" type="text" placeholder="Senha" />
+                    <span (click)="viewPassword()"><fa-icon [icon]="['fas', 'eye']"/></span>
+                </div>
+
+                <div class="inputSenha" *ngIf="!viewPasswd">
+                    <input formControlName="senha"  type="password"  placeholder="Senha" />
+                    <span (click)="viewPassword()"><fa-icon [icon]="['fas', 'eye']"/></span>
+                </div>
+
                 <select (change)="handleChange()" formControlName="sport" type="text" placeholder="Esportes de Interesse" >
                     <option *ngFor="let sport of sports" value="{{sport.sportId}}">
                         {{sport.sportName}}
@@ -38,6 +51,7 @@
                     </ng-container>
                 <input appCepMask formControlName="cep" type="text" placeholder="CEP" />
                 <button (click)="confirmCep()" class="form-button-login">Registrar</button>
+                <span (click)="navigate('/register')">Já tem uma conta? Faça login!</span>
             </form>
         </div>
     </div>
@@ -61,7 +75,7 @@
         </div>
 
         <div class="button-area">
-            <button class="form-button-login">Finalizar</button>
+            <button (click)="register()" class="form-button-login">Finalizar</button>
             <span (click)="closeModal()">Retornar</span>
         </div>
     </div>

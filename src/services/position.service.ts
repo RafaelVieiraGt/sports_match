@@ -14,4 +14,8 @@ export class PositionService {
   getAll(): Observable<Position[]> {
     return this.http.get<Position[]>(this.apiUrl + "position/all");
   }
+
+  findBySport(sportId: number): Observable<Position[]> {
+    return this.http.get<Position[]>(this.apiUrl + "position/" + sportId);
+  }
 }

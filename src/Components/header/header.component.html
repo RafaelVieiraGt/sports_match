@@ -4,9 +4,9 @@
 
         <div class="navigation-buttons">
             <button [ngClass]="isLanding ? 'btn-hidden' : 'button-home'" (click)="navigate('/game-hub')" >Jogos</button>
-            <button [ngClass]="isLanding ? 'btn-hidden' : 'button-home'" (click)="navigate('#')" >Times</button>
             <button [ngClass]="isLanding ? 'btn-hidden' : 'button-home'" (click)="navigate('/profile')" >Perfil</button>
-            <button [ngClass]="isLanding ? 'button-login' : 'btn-hidden'" (click)="navigate('#')" >Fazer Login</button>
+            <button [ngClass]="isLanding ? 'btn-hidden' : 'button-home'" (click)="quit()" >Sair</button>
+            <button [ngClass]="isLanding ? 'button-login' : 'btn-hidden'" (click)="navigate('/register')" >Fazer Login</button>
         </div>
     </div>
     <div class="underline" ></div>

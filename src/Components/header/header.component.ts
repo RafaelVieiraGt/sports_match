@@ -17,4 +17,9 @@ export class HeaderComponent {
   navigate(route: string): void {
     this.router.navigate([route])
   }
+
+  quit(): void {
+    localStorage.clear();
+    this.navigate("/home")
+  }
 }

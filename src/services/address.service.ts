@@ -14,4 +14,8 @@ export class AddressService {
   loadCep(cep: number): Observable<Cep> {
     return this.http.get<Cep>(this.apiUrl + `address/get-by-cep/${cep}`);
   }
+
+  createAddress(cep: number): Observable<number> {
+    return this.http.post<number>(this.apiUrl + `address/save-by-cep/${cep}`, null);
+  }
 }

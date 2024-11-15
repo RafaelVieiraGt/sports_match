@@ -11,6 +11,7 @@ import { GameHubServiceService } from '../../services/game-hub-service.service';
 import { CommonModule } from '@angular/common';
 import { SportsService } from '../../services/sports.service';
 import { Sports } from '../../model/Sports';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-location',
@@ -79,7 +80,12 @@ export class LocationComponent implements OnInit{
       )
 
       this._openGameService.saveOpenGame(newGame).subscribe(() => {
-        alert("Quadra cadastrada")
+        Swal.fire({
+          icon: 'success',
+          title: 'Sucesso!',
+          text: 'Jogo Criado com sucesso!',
+          confirmButtonText: 'OK'
+        });
         this.modalActive = false
       }, error => console.log(error)); 
     }
@@ -127,8 +133,13 @@ export class LocationComponent implements OnInit{
       )
 
       this._openGameService.saveOpenGame(newGame).subscribe(() => {
-        alert("Jogo cadastrado Quadra: "+ this.newPlaceId)
         this.modalActive = false;
+        Swal.fire({
+          icon: 'success',
+          title: 'Sucesso!',
+          text: "Jogo cadastrado  na Quadra: "+ this.newPlaceId,
+          confirmButtonText: 'OK'
+        });
       }, error => console.log(error));
     }, 
     error => {

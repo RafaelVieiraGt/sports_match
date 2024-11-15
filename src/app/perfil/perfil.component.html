@@ -5,7 +5,8 @@
         <div class="content-lado-esq">
             <div class="dados-perfil">
                 <div class="image">
-                    <img src="../../Assets/perfil-vazio.png" alt="">
+                    <img *ngIf="userPhoto.foto === '' || userPhoto === undefined " src="../../Assets/perfil-vazio.png"/>
+                    <img *ngIf="userPhoto.foto !== '' && userPhoto !== undefined " [src]="'data:image/png;base64,' + userPhoto.foto"/>
                 </div>
                 <div class="dados-principais">
                     <h1>{{user.userName}}</h1>
@@ -15,11 +16,9 @@
                 <div class="preferencias">
                     <h2>Preferências</h2>
 
-                    <span>Zagueiro <fa-icon [icon]="['fas', 'x']" ></fa-icon></span>
+                    <span>{{userPosition !== undefined ? userPosition : "Qualquer"}}</span>
 
-                    <span>Futebol <fa-icon [icon]="['fas', 'x']" ></fa-icon></span>
-
-                    <span>Editar Perfil <fa-icon [icon]="['fas', 'pencil']"  ></fa-icon></span>
+                    <span (click)="editarPerfil()">Editar Perfil <fa-icon [icon]="['fas', 'pencil']"  ></fa-icon></span>
                 </div>
             </div>
         </div>
@@ -29,18 +28,6 @@
                     <img src="../../Assets/background-perfil.png"/>
                 </div>
                 <div class="information">
-                    <div class="team">
-                        <h1>Team</h1>
-
-                        <img src="../../Assets/team-logo-teste.png"/>
-
-                        <div class="team-data">
-                            <h3>Fury Team</h3>
-                            <span>Time de vôlei juvenil feminino</span>
-                            <span>Desde 1993</span>
-                        </div>
-                    </div>
-                    <div class="underline"></div>
                     <div class="next-game">
                         <h1>Próximo Jogo</h1>
 
@@ -69,6 +56,34 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="editarPerfilModal" *ngIf="editarPerfilModal">
+            <h1>Altere as informações do perfil!</h1>
+
+            <form [formGroup]="editProfile">
+                <input formControlName="nome" type="text" placeholder="Nome" />
+                <input formControlName="descricao" type="text" placeholder="Descrição" />
+                <select formControlName="position">
+                    <option *ngFor="let p of positions" value="{{p.positionId}}">{{p.positionName}}</option>
+                </select>
+                <div class="file-upload">
+                    <input
+                      type="file"
+                      id="fileInput"
+                      (change)="onFileSelected($event)"
+                      hidden
+                    />
+                    <label for="fileInput" class="file-label">
+                      {{ selectedFileName || 'Escolha um arquivo' }}
+                    </label>
+                  </div>
+            </form>
+
+            <div class="button-area">
+                <button (click)="edit()" class="form-button-login">Finalizar</button>
+                <span (click)="editarPerfil()">Retornar</span>
             </div>
         </div>
     </div>

@@ -1,0 +1,33 @@
+<div class="body" >
+    <button (click)="navigate('/home')" class="btn-voltar">
+        Voltar
+    </button>
+    <div class="area-esq" >
+        <div class="image-area">
+            <img src="../../Assets/header-icon.svg">
+        </div>
+        <div class="credits">
+            <span>Ciência da Computação - UNISAGRADO</span>
+            <span>2024</span>
+        </div>
+    </div>
+    <div class="area-dir">
+        <div class="form-area" >
+            <form [formGroup]="loginForm">
+                <input formControlName="email" type="text" placeholder="E-mail" />
+                <div class="inputSenha" *ngIf="viewPasswd">
+                    <input formControlName="senha" type="text" placeholder="Senha" />
+                    <span (click)="viewPassword()"><fa-icon [icon]="['fas', 'eye']"/></span>
+                </div>
+                <div class="inputSenha" *ngIf="!viewPasswd">
+                    <input formControlName="senha"  type="password"  placeholder="Senha" />
+                    <span (click)="viewPassword()"><fa-icon [icon]="['fas', 'eye']"/></span>
+                </div>
+                <button (click)="login()" class="form-button-login">Login</button>
+                <span (click)="navigate('/login')">Registrar-se</span>
+            </form>
+        </div>
+    </div>
+</div>
+
+

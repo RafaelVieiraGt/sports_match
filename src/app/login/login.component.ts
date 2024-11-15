@@ -7,11 +7,15 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CepMaskDirective } from '../../directives/cep-mask.directive';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faCity, faMap, faRoad } from '@fortawesome/free-solid-svg-icons';
+import { faCity, faEye, faMap, faRoad } from '@fortawesome/free-solid-svg-icons';
 import { Cep } from '../../model/Cep';
 import { AddressService } from '../../services/address.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
+import { User } from '../../model/User';
+import { UserServiceService } from '../../services/user-service.service';
+import { UserDTO } from '../../model/UserDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -32,12 +36,14 @@ export class LoginComponent implements OnInit{
   voleiPositions: Position[] = [];
   registerForm!: FormGroup;
   modalActive: boolean = false;
+  viewPasswd: boolean = false;
   cep!: Cep;
 
-  constructor(private _sportsService: SportsService, private _positionService: PositionService, library: FaIconLibrary, private _addressService: AddressService) {
+  constructor(private router: Router, private _sportsService: SportsService, private _positionService: PositionService, library: FaIconLibrary, private _addressService: AddressService, private _userService : UserServiceService) {
     library.addIcons(faCity);
     library.addIcons(faRoad);
     library.addIcons(faMap);
+    library.addIcons(faEye)
   }
 
   ngOnInit(): void {
@@ -70,6 +76,10 @@ export class LoginComponent implements OnInit{
     }, error => {
       console.log(error)
     })
+  }
+
+  viewPassword(): void {
+    this.viewPasswd = !this.viewPasswd
   }
 
   sepPositions(): void {
@@ -119,4 +129,36 @@ export class LoginComponent implements OnInit{
     this.modalActive = false;
   }
   
-}
+  register() {
+    this._addressService.createAddress(Number(this.registerForm.get("cep")?.value.replace(/\D/g, '')))
+      .subscribe(data => {
+        let user : UserDTO = new UserDTO(
+          this.registerForm.get("name")?.value === "" ? null : this.registerForm.get("name")?.value,
+          this.registerForm.get("email")?.value === "" ? null : this.registerForm.get("email")?.value,
+          this.registerForm.get("senha")?.value === "" ? null : this.registerForm.get("senha")?.value,
+          this.registerForm.get("sport")?.value === "" ? null : this.registerForm.get("sport")?.value,
+          this.registerForm.get("position")?.value === "" ? null : this.registerForm.get("position")?.value,
+          data.toString()
+        )
+
+        this.registerUser(user);
+      }, error => {
+        console.log(error)
+      })
+    }
+
+    registerUser(user: UserDTO): void {
+      this._userService.createUser(user)
+      .subscribe(data => {
+        localStorage.setItem("@userId", data.userId.toString());
+        this.router.navigate(["/game-hub"]);
+      }, error => {
+        console.log(error)
+      })
+    }
+
+    navigate(route: string): void {
+      this.router.navigate([route])
+    }
+  }
+

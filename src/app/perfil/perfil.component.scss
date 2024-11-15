@@ -131,7 +131,7 @@ body {
     display: flex;
     flex-direction: row;
     background-color: #A8A6A6;
-    justify-content: space-between;
+    justify-content: center;
     padding: 22px 0;
     border-radius: 0 0 18px 18px;
 }
@@ -243,4 +243,94 @@ body {
     border: 1px solid #000;
     background-color: #EFCF26;
     cursor: pointer;
+}
+
+.editarPerfilModal {
+    width: 400px;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    right: 35%;
+    z-index: 99999;
+    border: 0;
+    border-radius: 44px;
+    background: #E1E0E0;
+}
+.editarPerfilModal h1 {
+    font-family: "Anton";
+    font-weight: 500;
+}
+
+.editarPerfilModal form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.editarPerfilModal form input, .editarPerfilModal form select {
+    width: 60%;
+    font-size: 20px;
+    padding: 10px 14px;
+    background-color: #fff;
+    font-family: "Anton";
+    font-weight: 500;
+    border: 0;
+    border-radius: 44px;
+}
+ .button-area {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.button-area span {
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Antonio";
+    font-weight: 500;
+    margin-top: 15px;
+}
+.button-area button {
+    border: 0;
+    padding: 10px 14px;
+    font-size: 20px;
+    width: 30%;
+    font-family: 'Antonio';
+    border-radius: 40px 40px 40px 40px;
+    background-color: #245324;
+    color: #fff;
+    border-right: 5px solid #000;
+    border-bottom: 3px solid #000;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.button-area button:hover{
+    color: #245324;
+    border: 1px solid #245324;
+    background: #fff;
+}
+
+.file-upload {
+    position: relative;
+    display: inline-block;
+}
+  
+.file-label {
+    display: inline-block;
+    padding: 10px 60px;
+    border-radius: 44px;
+    font-family: "Antonio";
+    font-weight: 500;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+.file-label input {
+  display: none;
 }
