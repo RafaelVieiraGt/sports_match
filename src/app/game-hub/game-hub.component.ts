@@ -129,7 +129,7 @@ export class GameHubComponent implements OnInit{
   }
 
   participar(opengameId: number): void {
-    this.service.participate(1, this.selectForm.get("position")?.value, opengameId).subscribe(
+    this.service.participate(Number(localStorage.getItem("@userId")), this.selectForm.get("position")?.value, opengameId).subscribe(
       response => {
         Swal.fire({
           title: 'Sucesso!',

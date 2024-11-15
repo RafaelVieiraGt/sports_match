@@ -32,6 +32,7 @@ export class LocationComponent implements OnInit{
   latDefinida: string = "";
   lngDefinida: string = "";
 
+  userId = Number(localStorage.getItem("@userId"))
   userLat!: number;
   userLng!: number;
 
@@ -79,7 +80,7 @@ export class LocationComponent implements OnInit{
         this.selectQuadra.get("quadra")?.value.placeId
       )
 
-      this._openGameService.saveOpenGame(newGame).subscribe(() => {
+      this._openGameService.saveOpenGame(this.userId, 99, newGame).subscribe(() => {
         Swal.fire({
           icon: 'success',
           title: 'Sucesso!',
@@ -132,7 +133,7 @@ export class LocationComponent implements OnInit{
         this.newPlaceId
       )
 
-      this._openGameService.saveOpenGame(newGame).subscribe(() => {
+      this._openGameService.saveOpenGame(this.userId, 99,newGame).subscribe(() => {
         this.modalActive = false;
         Swal.fire({
           icon: 'success',

@@ -100,7 +100,7 @@ export class PerfilComponent {
   }
 
   findNextGame() : void {
-    this._perfilService.getNextGame(this.latitude, this.longitude).subscribe(
+    this._perfilService.getNextGame(this.userId, this.latitude, this.longitude).subscribe(
       data => {
         this.nextGame = data
       },

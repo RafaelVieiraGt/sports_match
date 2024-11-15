@@ -18,8 +18,8 @@ export class PerfilService {
     return this.http.get<User>(this.apiUrl + `usuario/get-by-id/`+ userId);
   }
 
-  getNextGame(latitude: number, longitude: number) {
-    return this.http.get<CasualGame>(this.apiUrl + `base-games/next-game/${latitude}/${longitude}`)
+  getNextGame(userId:number, latitude: number, longitude: number) {
+    return this.http.get<CasualGame>(this.apiUrl + `base-games/next-game/${userId}/${latitude}/${longitude}`)
   }
 
   edit(userId: number, dto: EditPerfilDTO): Observable<any> {

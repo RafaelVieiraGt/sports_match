@@ -17,8 +17,8 @@ export class GameHubServiceService {
     return this.http.get(this.apiUrl + `base-games/all/${latitude}/${longitude}`)
   }
 
-  saveOpenGame(openGame: OpenGame): Observable<any> {
-    return this.http.post(this.apiUrl + "open-game/1/2", openGame)
+  saveOpenGame(userId: number, position: number, openGame: OpenGame): Observable<any> {
+    return this.http.post(this.apiUrl + `open-game/${userId}/${position}`, openGame)
   }
 
   participate(userId: number, position: number, opengameId: number): Observable<any> {
