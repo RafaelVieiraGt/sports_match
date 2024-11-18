@@ -158,7 +158,13 @@ export class LoginComponent implements OnInit{
         localStorage.setItem("@userId", data.userId.toString());
         this.router.navigate(["/game-hub"]);
       }, error => {
-        console.log(error)
+        this.modalActive = false;
+        Swal.fire({
+          title: 'Atenção!',
+          text: "Email já está em uso!",
+          icon: 'info',
+          confirmButtonText: 'Ok'}
+        )
       })
     }
 
