@@ -143,7 +143,12 @@ export class LoginComponent implements OnInit{
 
         this.registerUser(user);
       }, error => {
-        console.log(error)
+        Swal.fire({
+          title: 'Atenção!',
+          text: "Email já está em uso!",
+          icon: 'info',
+          confirmButtonText: 'Ok'}
+        )
       })
     }
 
