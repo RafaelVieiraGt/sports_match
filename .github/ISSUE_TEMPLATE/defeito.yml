@@ -1,0 +1,136 @@
+name: Relatório de defeito
+description: Registrar um defeito encontrado na execução de um caso de teste (Apêndice G do Projeto P2).
+title: "DEF-XXX – "
+labels: ["defeito", "status: novo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Preencha um relatório que outra pessoa consiga reproduzir sem explicação oral.
+        Use o mesmo ID DEF-XXX da aba **Defeitos** da planilha e cole o link desta issue lá.
+        Use somente dados fictícios (contas qa.*@teste.com). Não informe senhas reais.
+
+  - type: dropdown
+    id: requisito
+    attributes:
+      label: Requisito relacionado
+      options:
+        - RF-01 Cadastro
+        - RF-02 Autenticação
+        - RF-03 Partidas próximas
+        - RF-04 Participação
+        - RF-05 Criação de partida
+        - RF-06 Perfil
+        - RNF-01 Compatibilidade
+        - RNF-02 Desempenho
+        - RNF-03 Segurança básica
+    validations:
+      required: true
+
+  - type: input
+    id: caso
+    attributes:
+      label: Caso de teste e execução
+      description: IDs da planilha.
+      placeholder: "CT-011 / EX-011"
+    validations:
+      required: true
+
+  - type: input
+    id: ambiente
+    attributes:
+      label: Ambiente e versão
+      description: Commit do frontend e do backend, navegador e sistema operacional.
+      placeholder: "Front 42969ba | Back abc1234 | Chrome 131 | Windows 11"
+    validations:
+      required: true
+
+  - type: textarea
+    id: precondicoes
+    attributes:
+      label: Pré-condições
+      placeholder: "Usuário qa.cadastro01@teste.com cadastrado; localStorage limpo."
+    validations:
+      required: true
+
+  - type: textarea
+    id: dados
+    attributes:
+      label: Dados utilizados
+      placeholder: "E-mail: qa.cadastro01@teste.com | Senha: SenhaErrada1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: passos
+    attributes:
+      label: Passos para reproduzir
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Resultado esperado
+      description: Copie o resultado esperado do caso de teste.
+    validations:
+      required: true
+
+  - type: textarea
+    id: obtido
+    attributes:
+      label: Resultado obtido
+      description: O que de fato aconteceu (mensagem, URL final, valor exibido).
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severidade
+    attributes:
+      label: Severidade
+      description: "Crítica = bloqueia fluxo ou compromete dados; Alta = função principal falha; Média = há alternativa; Baixa = cosmético."
+      options:
+        - Baixa
+        - Média
+        - Alta
+        - Crítica
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioridade
+    attributes:
+      label: Prioridade
+      options:
+        - Baixa
+        - Média
+        - Alta
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidencias
+    attributes:
+      label: Evidências
+      description: Arraste prints, vídeo curto ou log aqui. Use o nome EV_<caso>_<execução>_<data>.
+      placeholder: "EV_CT-011_EX-011_2026-11-17.png"
+    validations:
+      required: true
+
+  - type: textarea
+    id: observacoes
+    attributes:
+      label: Observações (opcional)
+      description: Console do DevTools, requisição no Network, frequência do problema.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        **Ciclo de vida (via labels):** status: novo → status: em análise → status: em correção → status: pronto para reteste → issue fechada (Encerrado) ou status: reaberto.
+        No reteste, comente com a nova execução (ex.: EX-030, ciclo 2), o resultado e a evidência antes de fechar.
