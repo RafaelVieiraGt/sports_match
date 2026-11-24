@@ -65,6 +65,17 @@ export class LocationComponent implements OnInit{
   }
 
   cadastrarJogo(): void {
+    if (!this.isFormFilled(this.gameForm)) {
+      this.showValidationToast('Preencha todos os campos do jogo.');
+      return;
+    }
+
+    const maxPlayers = Number(this.gameForm.get('maxPlayers')?.value);
+    if (!Number.isFinite(maxPlayers) || maxPlayers <= 1) {
+      this.showValidationToast('O número máximo de jogadores deve ser maior que 1.');
+      return;
+    }
+
     if (localStorage.getItem("@latitude") !== null) {
       this.modalActive = true;
     }
@@ -108,6 +119,11 @@ export class LocationComponent implements OnInit{
   }
 
   cadastrarQuadraJogo(): void {
+    if (!this.isFormFilled(this.placeForm)) {
+      this.showValidationToast('Preencha todos os campos da quadra.');
+      return;
+    }
+
     let latitude = Number(localStorage.getItem("@latitude"))
     let longitude = Number(localStorage.getItem("@longitude"))
 
@@ -178,5 +194,25 @@ export class LocationComponent implements OnInit{
 
   sairModal(): void {
     this.modalActive = false;
+  }
+
+  private isFormFilled(form: FormGroup): boolean {
+    return Object.values(form.controls).every(control => {
+      const value = control.value;
+      return typeof value === 'string'
+        ? value.trim().length > 0
+        : value !== null && value !== undefined;
+    });
+  }
+
+  private showValidationToast(message: string): void {
+    void Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'warning',
+      title: message,
+      showConfirmButton: false,
+      timer: 3000
+    });
   }
 }
