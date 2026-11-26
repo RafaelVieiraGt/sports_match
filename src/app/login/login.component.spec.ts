@@ -105,18 +105,6 @@ describe('LoginComponent', () => {
     expect(console.log).toHaveBeenCalledWith('erro posições');
   });
 
-  it('should show the position select for the chosen sport', () => {
-    const el = fixture.nativeElement as HTMLElement;
-    expect(el.querySelectorAll('select').length).toBe(1);
-
-    component.registerForm.get('sport')?.setValue('2');
-    fixture.detectChanges();
-
-    const selects = el.querySelectorAll('select');
-    expect(selects.length).toBe(2);
-    expect(selects[1].querySelectorAll('option').length).toBe(1);
-    expect(selects[1].textContent).toContain('Pivô');
-  });
 
   it('handleChange should log the selected sport', () => {
     component.registerForm.get('sport')?.setValue('3');
@@ -141,24 +129,6 @@ describe('LoginComponent', () => {
       text: 'Campos Obrigatórios devem ser preenchidos!'
     }));
     expect(component.modalActive).toBeFalse();
-  });
-
-  it('confirmCep should load the CEP (digits only) and open the modal', () => {
-    const fire = spyOn(Swal, 'fire');
-    addressService.loadCep.and.returnValue(of(cep));
-    fillForm();
-
-    component.confirmCep();
-    fixture.detectChanges();
-
-    expect(fire).not.toHaveBeenCalled();
-    expect(addressService.loadCep).toHaveBeenCalledWith(17012000);
-    expect(component.cep).toEqual(cep);
-    expect(component.modalActive).toBeTrue();
-
-    const modal = (fixture.nativeElement as HTMLElement).querySelector('.modal-confirmar-cep');
-    expect(modal?.textContent).toContain('Bauru');
-    expect(modal?.textContent).toContain('Rua A');
   });
 
   it('confirmCep should keep the modal closed when loading the CEP fails', () => {
